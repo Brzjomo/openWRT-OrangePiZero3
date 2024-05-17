@@ -1,13 +1,24 @@
 #!/bin/bash
 
 # 修改默认IP
-# sed -i 's/192.168.0.55/192.168.1.1/g' package/base-files/files/bin/config_generate
+# sed -i 's/192.168.1.1/192.168.50.80/g' package/base-files/files/bin/config_generate
 
 # 更改默认 Shell 为 zsh
 # sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
 
 # TTYD 免登录
 # sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
+
+# 修改默认主机名
+sed -i '/uci commit system/i\uci set system.@system[0].hostname='OpenWrt-opz3'' package/lean/default-settings/files/zzz-default-settings
+
+# 分配静态IP
+sed -i '/uci commit system/a uci set network.lan.ipaddr='\''192.168.50.80'\''\nuci set network.lan.proto='\''static'\''\nuci set network.lan.type='\''bridge'\''\nuci set network.lan.ifname='\''eth0'\''\nuci set network.lan.netmask='\''255.255.255.0'\''\nuci set network.lan.gateway='\''192.168.50.1'\''\nuci set network.lan.dns='\''192.168.50.1'\''\nuci commit network' package/lean/default-settings/files/zzz-default-settings
+
+# 添加两个库
+sed -i '$a\
+src-git kenzo https://github.com/kenzok8/openwrt-packages\
+src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 # 移除要替换的包
 rm -rf feeds/luci/themes/luci-theme-argon
@@ -26,7 +37,7 @@ function git_sparse_clone() {
 git clone --depth=1 -b main https://github.com/fw876/helloworld package/luci-app-ssr-plus
 #git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
-git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
+# git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 
 # Themes
 git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
@@ -47,7 +58,7 @@ sed -i 's/os.date()/os.date("%a %Y-%m-%d %H:%M:%S")/g' package/lean/autocore/fil
 # 修改版本为编译日期
 date_version=$(date +"%y.%m.%d")
 orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
-sed -i "s/${orig_version}/R${date_version} by jym66/g" package/lean/default-settings/files/zzz-default-settings
+sed -i "s/${orig_version}/R${date_version} by jym66 , modified by Brzjomo /g" package/lean/default-settings/files/zzz-default-settings
 
 # 修复 hostapd 报错
 cp -f $GITHUB_WORKSPACE/scripts/011-fix-mbo-modules-build.patch package/network/services/hostapd/patches/011-fix-mbo-modules-build.patch
