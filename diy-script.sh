@@ -63,9 +63,6 @@ sed -i "s/${orig_version}/R${date_version} by jym66 , modified by Brzjomo /g" pa
 # 修复 hostapd 报错
 cp -f $GITHUB_WORKSPACE/scripts/011-fix-mbo-modules-build.patch package/network/services/hostapd/patches/011-fix-mbo-modules-build.patch
 
-# 修复 rtl8812au-ac 驱动编译报错
-cp -f $GITHUB_WORKSPACE/scripts/050-backport-6.1.patch package/kernel/rtl8812au-ac/patches/050-backport-6.1.patch
-
 # 修复 armv8 设备 xfsprogs 报错
 sed -i 's/TARGET_CFLAGS.*/TARGET_CFLAGS += -DHAVE_MAP_SYNC -D_LARGEFILE64_SOURCE/g' feeds/packages/utils/xfsprogs/Makefile
 
