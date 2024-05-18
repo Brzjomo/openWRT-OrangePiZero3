@@ -18,7 +18,8 @@ sed -i '/uci commit system/a uci set network.lan.ipaddr='\''192.168.50.80'\''\nu
 # 添加两个库
 sed -i '$a\
 src-git kenzo https://github.com/kenzok8/openwrt-packages\
-src-git small https://github.com/kenzok8/small' feeds.conf.default
+src-git small https://github.com/kenzok8/small
+src-git realtek https://github.com/Pix13/openwrt-rtw88-usb-feed' feeds.conf.default
 
 # 移除要替换的包
 rm -rf feeds/luci/themes/luci-theme-argon
@@ -65,6 +66,9 @@ cp -f $GITHUB_WORKSPACE/scripts/011-fix-mbo-modules-build.patch package/network/
 
 # 修复 armv8 设备 xfsprogs 报错
 sed -i 's/TARGET_CFLAGS.*/TARGET_CFLAGS += -DHAVE_MAP_SYNC -D_LARGEFILE64_SOURCE/g' feeds/packages/utils/xfsprogs/Makefile
+
+# 修复 rtl8812au-ac 驱动编译报错
+cp -f $GITHUB_WORKSPACE/scripts/050-backport-6.1.patch package/kernel/rtl8812au-ac/patches/050-backport-6.1.patch
 
 # 修改 Makefile
 find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' {}
