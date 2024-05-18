@@ -66,6 +66,9 @@ cp -f $GITHUB_WORKSPACE/scripts/011-fix-mbo-modules-build.patch package/network/
 # 修复 rtl8812au-ac 驱动编译报错
 cp -f $GITHUB_WORKSPACE/scripts/050-backport-6.1.patch package/kernel/rtl8812au-ac/patches/050-backport-6.1.patch
 
+# 修复 rtl8812au-ct 驱动编译报错
+cp -f $GITHUB_WORKSPACE/scripts/050-backport-6.1.patch package/kernel/rtl8812au-ct/patches/050-backport-6.1.patch
+
 # 修复 armv8 设备 xfsprogs 报错
 sed -i 's/TARGET_CFLAGS.*/TARGET_CFLAGS += -DHAVE_MAP_SYNC -D_LARGEFILE64_SOURCE/g' feeds/packages/utils/xfsprogs/Makefile
 
