@@ -17,9 +17,9 @@
 
 
 ## 插件变更 [![](https://img.shields.io/badge/-固件插件及功能预览-FFFFFF.svg)](#插件预览-)
-1.加入rtw88驱动
-2.移除clash，wireguard
-3.追加adbyby-plus，aliyundrive，qbittorrent，qos，unblockmusic，uugamebooster，watchcat，wifischedule，store，docker等插件
+1. 加入rtw88驱动
+2. 移除clash，wireguard
+3. 追加adbyby-plus，aliyundrive，qbittorrent，qos，unblockmusic，uugamebooster，watchcat，wifischedule，store，docker等插件
 
 
 
