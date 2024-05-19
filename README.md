@@ -1,6 +1,6 @@
 <div align="center">
 <img width="768" src="https://cdn.jsdelivr.net/gh/haiibo/OpenWrt/images/openwrt.png"/>
-<h1>OpenWrt — 香橙派zero3 自用</h1>
+<h1>OpenWrt — 香橙派zero3</h1>
 
 </div>
 
@@ -8,7 +8,7 @@
 ## 项目说明 [![](https://img.shields.io/badge/-项目基本介绍-FFFFFF.svg)](#项目说明-)
 - 固件构成：[![Lean](https://img.shields.io/badge/Lede-Lean-ff69b4.svg?style=flat&logo=appveyor)](https://github.com/coolsnowwolf/lede) [![P3TERX](https://img.shields.io/badge/OpenWrt-P3TERX-blueviolet.svg?style=flat&logo=appveyor)](https://github.com/P3TERX/Actions-OpenWrt) [![Flippy](https://img.shields.io/badge/Package-Flippy-orange.svg?style=flat&logo=appveyor)](https://github.com/unifreq/openwrt_packit) [![Haiibo](https://img.shields.io/badge/Build-Haiibo-32C955.svg?style=flat&logo=appveyor)](https://github.com/haiibo/OpenWrt)
 - 项目使用 Github Actions 拉取 [Lean](https://github.com/coolsnowwolf/lede) 的 Openwrt 源码仓库进行云编译
-- 固件默认管理地址：`192.168.1.1` 默认用户：`root` 默认密码：`password`
+- 固件默认管理地址：`192.168.50.80` 默认用户：`root` 默认密码：`password`
 
 ## 固件特色 [![](https://img.shields.io/badge/-本项目固件特色-FFFFFF.svg)](#固件特色-)
 1. 固件每天定时自动编译，以确保获得最新体验
@@ -16,12 +16,10 @@
 
 
 
-## 插件预览 [![](https://img.shields.io/badge/-固件插件及功能预览-FFFFFF.svg)](#插件预览-)
-<details>
-<summary><b>&nbsp;Orange Pi Zero3 插件预览</b></summary>
-<br/>
-<img src="https://raw.githubusercontent.com/jym66/openWRT-OrangePiZero3/main/images/openwrt1.png"/>
-</details>
+## 插件变更 [![](https://img.shields.io/badge/-固件插件及功能预览-FFFFFF.svg)](#插件预览-)
+1.加入rtw88驱动
+2.移除clash，wireguard
+3.追加adbyby-plus，aliyundrive，qbittorrent，qos，unblockmusic，uugamebooster，watchcat，wifischedule，store，docker等插件
 
 
 
