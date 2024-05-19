@@ -15,7 +15,7 @@ sed -i '/uci commit system/i\uci set system.@system[0].hostname='OpenWrt-opz3'' 
 # 分配静态IP
 sed -i '/uci commit system/a uci set network.lan.ipaddr='\''192.168.50.80'\''\nuci set network.lan.proto='\''static'\''\nuci set network.lan.type='\''bridge'\''\nuci set network.lan.ifname='\''eth0'\''\nuci set network.lan.netmask='\''255.255.255.0'\''\nuci set network.lan.gateway='\''192.168.50.1'\''\nuci set network.lan.dns='\''192.168.50.1'\''\nuci commit network' package/lean/default-settings/files/zzz-default-settings
 
-# 添加两个库
+# 添加三个库
 sed -i '$a\
 src-git kenzo https://github.com/kenzok8/openwrt-packages\
 src-git small https://github.com/kenzok8/small
