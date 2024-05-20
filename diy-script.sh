@@ -18,7 +18,7 @@ sed -i '/uci commit system/a uci set network.lan.ipaddr='\''192.168.50.80'\''\nu
 # 添加三个库
 sed -i '$a\
 src-git kenzo https://github.com/kenzok8/openwrt-packages\
-src-git small https://github.com/kenzok8/small
+src-git small https://github.com/kenzok8/small\
 src-git realtek https://github.com/Pix13/openwrt-rtw88-usb-feed' feeds.conf.default
 
 # 移除要替换的包
